@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ChanceMe</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="ChanceMe is a simpler, more accurate, more fun way to calculate your chances of getting into college.">
+    <meta name="author" content="ChanceMe Authors at SpartaHack 2017">
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" type="text/css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <meta name="theme-color" content="#C80000">
+    <style type="text/css">
+        .description {
+            font-weight: bold;
+        }
+        
+        .more_info {
+            border-bottom: 1px dotted;
+            position: relative;
+        }
+        
+        .more_info .title {
+            position: absolute;
+            top: 20px;
+            background: silver;
+            padding: 4px;
+            left: 0;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center">ChanceMe</h1>
+    <h5 style="text-align: center">College Chances Calculator</h5>
+    <div class="docs-section" id="forms">
+        <div class="docs-example docs-example-forms">
+            <form onsubmit="return false;">
+                <div class="row">
+                    <div style="text-align: center;">
+                        <label for="list" id="clabel">Select a College <span style="color: red">*</span>
+                            <a class="more_info" title="Please enter the official, full name of the school." 
+                            style="border-bottom: 1px black !important; font-size: 10px; cursor: help">What's this?</a>
+                        </label>
+                        <input type="text" list="_dl" id="cinput" required>
+                        <datalist id="_dl">
+                            <select style="display: none" id="dl"></select>
+                        </datalist>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns">
+                        <label for="satbox">SAT / ACT (1600 / 36) <span style="color: red">*</span>
+                            <a class="more_info" title="The ACT and the new SAT are preferred. If you want to use the old SAT, multiply the score by 2 / 3." 
+                            style="border-bottom: 1px black !important; font-size: 10px; cursor: help">What's this?</a>
+                        </label>
+                        <input class="u-full-width" type="number" min="0" max="1600" id="satbox" value="0" required>
+                    </div>
+                    <div class="six columns">
+                        <label for="gpabox">Unweighted GPA (4.0 scale) <span style="color: red">*</span>
+                            <a class="more_info" title="Weighted GPAs are not supported since each institution uses a different scale. See if your school provides a way to convert to a 4-point, unweighted scale." 
+                            style="border-bottom: 1px black !important; font-size: 10px; cursor: help">What's this?</a>
+                        </label>
+                        <input class="u-full-width" type="number" step="any" min="0" max="4" id="gpabox" value="0" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns">
+                        <label for="ap5box">No. of 5s (AP) or 7s (IB)
+                            <a class="more_info" title="Enter in the number of fives you received on AP exams you've taken. Add this to the number of sevens you received on your IB exams." 
+                            style="border-bottom: 1px black !important; font-size: 10px; cursor: help">What's this?</a>
+                        </label>
+                        <input class="u-full-width" type="number" min="0" value="0" id="ap5box">
+                    </div>
+                    <div class="six columns">
+                        <label for="ap4box">No. of 4s (AP), 5s &amp; 6s (IB)
+                            <a class="more_info" title="Enter in the number of fours you received on AP exams you've taken. Add this to the number of fives and sixes you received on your IB exams." 
+                            style="border-bottom: 1px black !important; font-size: 10px; cursor: help">What's this?</a>
+                        </label>
+                        <input class="u-full-width" type="number" min="0" value="0" id="ap4box">
+                    </div>
+                </div>
+                <div style="width:100%;height:20px;"></div>
+                <div class="docs-section">
+                    <label style="text-align: center" id="questiontag"></label>
+                    <label style="text-align: center; display: none" id="warning">Please answer all 20 questions.</label>
+                    <div class="docs-example">
+                        <div class="row" style="text-align: center">
+                            <input type="button" id="button1" value="Strongly Agree">
+                            <input type="button" id="button2" value="Agree">
+                            <input type="button" id="button3" value="Neutral">
+                            <input type="button" id="button4" value="Disagree">
+                            <input type="button" id="button5" value="Strongly Disagree">
+                        </div>
+                        <center>
+                            <input class="button-primary " type="submit" value="Chance Me" id="getdata">
+                            <input class="button-primary " type="reset" value="Reset" onclick="r(); location.reload();">
+                            <br>
+                            <input id="finalscore" style="text-align: center; font-weight: bold; width: 240px" type="text" readonly>
+                            <br>
+                            <a id="details_link" onclick="toggleDetails();" style="border-bottom: 1px dotted; cursor: pointer; display: none">Show Details</a>
+                            <div id="details" style="display: none">
+                                <div class="row">
+                                    <div class="one-half column" id="detail-col">
+                                        <span class="description">Your Stats</span>
+                                        <br><span class="description">Objective Score:</span> <span id="objective">00.00</span>
+                                        <br><span class="description">Subjective Score:</span> <span id="subjective">00.00</span>
+                                        <br><span class="description">Composite Score:</span> <span id="composite">00.00</span>
+                                        <br><span class="description">Scaled Score:</span> <span id="scaled">00.00</span><br><br>
+                                    </div>
+                                    <div class="one-half column" id="detail-col-2">
+                                        <span class="description">College's Stats</span>
+                                        <br><span class="description">Average GPA:</span> <span id="stats_gpa">0.00</span>;
+                                        <span class="description">Admissions Rate:</span> <span id="stats_rate">00.00%</span>
+                                        <br><span class="description">SAT 25<super>th</super> Percentile:</span> <span id="stats_sat_25">0000</span>;
+                                        <span class="description">75<super>th</super> Percentile:</span> <span id="stats_sat_75">0000</span>
+                                        <br><span class="description">ACT 25<super>th</super> Percentile:</span> <span id="stats_act_25">00</span>;
+                                        <span class="description">75<super>th</super> Percentile:</span> <span id="stats_act_75">00</span>
+                                        <br><span class="description">Address:</span> <span id="stats_address">123 Main St., Somewhere MI 56789</span>
+                                    </div>
+                                </div>
+                        </center>
+                        </div>
+                    </div>
+            </form>
+            </div>
+            <div id="footer" style="bottom: 0; width: 100%; font-size: 8px;text-align: center">
+                <span>Additional source code (in C#) is available <a href="WebScraper.cs">here</a>.</span><br>
+                <span>Made by Sumit Basak, Zhanhe "Jay" Lyu, Alex Slovinski, and Brennan Stark.</span>
+            </div>
+            <script src="js/app.js"></script>
+</body>
+
+</html>
