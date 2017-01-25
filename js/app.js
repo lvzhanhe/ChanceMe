@@ -114,9 +114,14 @@ function getObjectiveScore(gpa, ap5, ap4, sat) {
     output += sat / (sat_coeff / (sat / 1600));
     var gpa_coeff = 0.2;
     if (gpa < college.GPA) gpa_coeff = 0.25;
-    output += gpa / (gpa_coeff / (gpa / 4));
+    output += gpa / (gpa_coeff / (gpa ./ 4));
+    if (output > 0) var scaledObjectiveAdd = (output/50);
+    output +=  (scaledObjectiveAdd/.1); 
     var aps = parseFloat(ap5) + ap4 / 2;
-    return Math.round(100 * (output + aps)) / 100;
+    if (aps > 10) aps = 10; 
+    var objectiveScoreFinal = output + aps; 
+     
+    return Math.round(100 * (objectiveScoreFinal)) / 100;
 }
 
 getdata.onclick = function () {
@@ -156,6 +161,7 @@ getdata.onclick = function () {
 function getTotalApplicantScore(TA) {
     var index = ids.indexOf(cinput.value);
     var acceptance = actual_JSON[index].ADMISSION.replace("%", "") / 100;
+    if (TA >= 120) TA = 119.9; 
     var final = 120 - TA;
     final /= acceptance;
     final /= TA;
