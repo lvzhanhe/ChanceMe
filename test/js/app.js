@@ -96,15 +96,6 @@ loadJSON(function (response) {
 });
 
 $("span[title]").click(function () {
-<<<<<<< HEAD
-    var $title = $(this).find(".title");
-    if (!$title.length) {
-        $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
-    } else {
-        $title.remove();
-    }
-});
-=======
   var $title = $(this).find(".title");
   if (!$title.length) {
     $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
@@ -112,7 +103,6 @@ $("span[title]").click(function () {
     $title.remove();
   }
 })
->>>>>>> 64d976b0be51cfe31ce0086c3ffdca9469d94b58
 
 function getObjectiveScore(gpa, ap5, ap4, sat) {
     var index = ids.indexOf(cinput.value);
@@ -124,19 +114,13 @@ function getObjectiveScore(gpa, ap5, ap4, sat) {
     output += sat / (sat_coeff / (sat / 1600));
     var gpa_coeff = 0.2;
     if (gpa < college.GPA) gpa_coeff = 0.25;
-<<<<<<< HEAD
-    output += gpa / (gpa_coeff / (gpa / 4));
-    if (output > 0) var scaledObjectiveAdd = (output / 50);
-    output += (scaledObjectiveAdd / .1);
-=======
     output += gpa / (gpa_coeff / (gpa / .4));
     if (output > 0) var scaledObjectiveAdd = (output/50);
     output +=  (scaledObjectiveAdd/.1); 
->>>>>>> 64d976b0be51cfe31ce0086c3ffdca9469d94b58
     var aps = parseFloat(ap5) + ap4 / 2;
-    if (aps > 10) aps = 10;
-    var objectiveScoreFinal = output + aps;
-
+    if (aps > 10) aps = 10; 
+    var objectiveScoreFinal = output + aps; 
+     
     return Math.round(100 * (objectiveScoreFinal)) / 100;
 }
 
@@ -152,9 +136,7 @@ getdata.onclick = function () {
         warning.style = "text-align: center; display: block; color: red";
         return;
     }
-    if (gpabox.value < 0 || gpabox.value > 4) {
-        return;
-    }
+    if (gpabox.value < 0 || gpabox.value > 4) { return; }
     // getdata.disabled = true;
     details_link.style = "border-bottom: 1px dotted; cursor: pointer; display: inline";
     var test = satbox.value > 36 ? satbox.value : Math.round(satbox.value * 1600 / 36);
@@ -199,13 +181,8 @@ getdata.onclick = function () {
 function getTotalApplicantScore(TA) {
     var index = ids.indexOf(cinput.value);
     var acceptance = actual_JSON[index].ADMISSION.replace("%", "") / 100;
-<<<<<<< HEAD
-    if (TA >= 120) TA = 119.9;
-    var final = 120 - TA;
-=======
     if (TA >= 90) TA = 89.9; 
     var final = 90 - TA;
->>>>>>> 64d976b0be51cfe31ce0086c3ffdca9469d94b58
     final /= acceptance;
     final /= TA;
     final = TA / final;
@@ -281,22 +258,6 @@ function loadJSON(callback) {
     };
     xobj.send(null);
 }
-
-function loadText(callback) {
-    var xobj = new XMLHttpRequest();
-    xobj.overrideMimeType("text/plain");
-    xobj.open('GET', 'builddate', true);
-    xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-            callback(xobj.responseText);
-        }
-    };
-    xobj.send(null);
-}
-
-loadText(function (response) {
-    document.getElementById('builddate').innerText = response.substring(response.indexOf(' ') + 1);
-});
 
 var visible = false;
 
