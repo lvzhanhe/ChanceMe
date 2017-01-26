@@ -192,7 +192,7 @@ function getTotalApplicantScore(TA) {
 
 
 function changeQuestion() {
-    warning.style = "text-align: center; display: none";76E
+    warning.style = "text-align: center; display: none";
     var loop = true;
     while (loop) {
         var index = Math.floor(Math.random() * questions.length);
