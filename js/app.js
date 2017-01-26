@@ -102,7 +102,7 @@ $("span[title]").click(function () {
   } else {
     $title.remove();
   }
-});​
+})
 
 function getObjectiveScore(gpa, ap5, ap4, sat) {
     var index = ids.indexOf(cinput.value);
@@ -114,7 +114,7 @@ function getObjectiveScore(gpa, ap5, ap4, sat) {
     output += sat / (sat_coeff / (sat / 1600));
     var gpa_coeff = 0.2;
     if (gpa < college.GPA) gpa_coeff = 0.25;
-    output += gpa / (gpa_coeff / (gpa ./ 4));
+    output += gpa / (gpa_coeff / (gpa / .4));
     if (output > 0) var scaledObjectiveAdd = (output/50);
     output +=  (scaledObjectiveAdd/.1); 
     var aps = parseFloat(ap5) + ap4 / 2;
