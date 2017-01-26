@@ -124,6 +124,9 @@ function getObjectiveScore(gpa, ap5, ap4, sat) {
     return Math.round(100 * (objectiveScoreFinal)) / 100;
 }
 
+
+
+
 getdata.onclick = function () {
     if ((satbox.value > 36 && satbox.value < 400) || satbox.value < 1 || satbox.value > 1600) {
         alert("Please enter a valid test score.");
@@ -138,7 +141,24 @@ getdata.onclick = function () {
     details_link.style = "border-bottom: 1px dotted; cursor: pointer; display: inline";
     var test = satbox.value > 36 ? satbox.value : Math.round(satbox.value * 1600 / 36);
     var _objective = getObjectiveScore(gpabox.value, ap5box.value, ap4box.value, test);
-    var comp = _objective + (sub / 2);
+    var comp = _objective + (sub / 3);
+    stats_gpa.innerText = college.GPA;
+    stats_rate.innerText = college.ADMISSION;
+    stats_sat_25.innerText = college.SAT_25;
+    stats_sat_75.innerText = college.SAT_75;
+    stats_rate.innerText = college.ADMISSION;
+    var collegeAP5 = (.9 / college.ADMISSION); 
+    var collegeAP4 = 0;
+    var collegeAvgSAT = (college.SAT_25 + college.SAT_75) / 2;
+    var collegeObjectiveScore75 = getObjectiveScore(college.GPA, collegeAP5, 0, college.SAT_75);
+    var collegeObjectiveScore50 = getObjectiveScore(college.GPA, collegeAP5, 0, collegeAvgSAT);
+    var aboveAverageApplicant = false; 
+    var exceptionalApplicant = false; 
+    if (objectiveScoreFinal > collegeObjectiveScore50) aboveAverageApplicant = true;
+    if (objectiveScoreFinal > collegeObjectiveScore75) exceptionalApplicant = true; 
+    if (aboveAverageApplicant = true) comp = (1.2 * _objective) + (.8) * (sub/2); 
+    if (exceptionalApplicant = true) comp = (1.4 * _objective) + (.6)(sub/2);
+    
     var _percent = getTotalApplicantScore(comp);
     finalscore.value = Math.round(_percent * 100) / 100 + "%";
 
@@ -161,14 +181,15 @@ getdata.onclick = function () {
 function getTotalApplicantScore(TA) {
     var index = ids.indexOf(cinput.value);
     var acceptance = actual_JSON[index].ADMISSION.replace("%", "") / 100;
-    if (TA >= 120) TA = 119.9; 
-    var final = 120 - TA;
+    if (TA >= 90) TA = 89.9; 
+    var final = 90 - TA;
     final /= acceptance;
     final /= TA;
     final = TA / final;
     if (final > 100) final = 90 + (-1 / (TA / 100) + 10);
     return final;
 }
+
 
 function changeQuestion() {
     warning.style = "text-align: center; display: none";
