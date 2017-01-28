@@ -102,7 +102,7 @@ $("span[title]").click(function () {
     } else {
         $title.remove();
     }
-});
+})
 
 function getObjectiveScore(gpa, ap5, ap4, sat) {
     var index = ids.indexOf(cinput.value);
