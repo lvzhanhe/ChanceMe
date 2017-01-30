@@ -167,7 +167,7 @@ getdata.onclick = function () {
     if (_objective > collegeObjectiveScore50) aboveAverageApplicant = true;
     if (_objective > collegeObjectiveScore75) exceptionalApplicant = true; 
     if (aboveAverageApplicant = true) comp = (1.2 * _objective) + (.8) * (sub/2); 
-    if (exceptionalApplicant = true) comp = (1.4 * _objective) + (.6)(sub/2);
+    if (exceptionalApplicant = true) comp = (1.4 * _objective) + (.6) * (sub/2);
     
     
     var _percent = getTotalApplicantScore(comp);
