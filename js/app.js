@@ -159,7 +159,6 @@ getdata.onclick = function () {
     if (aboveAverageApplicant = true) comp = (1.2 * _objective) + (.8) * (sub/2); 
     if (exceptionalApplicant = true) comp = (1.4 * _objective) + (.6)(sub/2);
     
-    var test = test; 
     
     var _percent = getTotalApplicantScore(comp);
     finalscore.value = Math.round(_percent * 100) / 100 + "%";
