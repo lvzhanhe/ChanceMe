@@ -144,6 +144,14 @@ getdata.onclick = function () {
     }
     // getdata.disabled = true;
     details_link.style = "border-bottom: 1px dotted; cursor: pointer; display: inline";
+    var college = actual_JSON[index];
+    stats_gpa.innerText = college.GPA;
+    stats_rate.innerText = college.ADMISSION;
+    stats_sat_25.innerText = college.SAT_25;
+    stats_sat_75.innerText = college.SAT_75;
+    stats_act_25.innerText = college.ACT_25;
+    stats_act_75.innerText = college.ACT_75;
+    stats_address.innerText = college.ADDRESS;
     var test = satbox.value > 36 ? satbox.value : Math.round(satbox.value * 1600 / 36);
     var _objective = getObjectiveScore(gpabox.value, ap5box.value, ap4box.value, test);
     var comp = _objective + (sub / 3);
@@ -169,14 +177,7 @@ getdata.onclick = function () {
     scaled.innerText = (Math.round(_percent * 100) / 100).toPrecision(4);
 
     var index = ids.indexOf(cinput.value);
-    var college = actual_JSON[index];
-    stats_gpa.innerText = college.GPA;
-    stats_rate.innerText = college.ADMISSION;
-    stats_sat_25.innerText = college.SAT_25;
-    stats_sat_75.innerText = college.SAT_75;
-    stats_act_25.innerText = college.ACT_25;
-    stats_act_75.innerText = college.ACT_75;
-    stats_address.innerText = college.ADDRESS;
+    
 }
 
 function getTotalApplicantScore(TA) {
