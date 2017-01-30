@@ -144,6 +144,7 @@ getdata.onclick = function () {
     }
     // getdata.disabled = true;
     details_link.style = "border-bottom: 1px dotted; cursor: pointer; display: inline";
+    var index = ids.indexOf(cinput.value);
     var college = actual_JSON[index];
     stats_gpa.innerText = college.GPA;
     stats_rate.innerText = college.ADMISSION;
@@ -176,7 +177,7 @@ getdata.onclick = function () {
     composite.innerText = (Math.round(comp * 100) / 100).toPrecision(4);
     scaled.innerText = (Math.round(_percent * 100) / 100).toPrecision(4);
 
-    var index = ids.indexOf(cinput.value);
+   
     
 }
 
