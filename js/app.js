@@ -117,9 +117,7 @@ function getObjectiveScore(gpa, ap5, ap4, sat) {
     output += gpa / (gpa_coeff / (gpa / 4));
     if (output > 0) var scaledObjectiveAdd = (output / 50);
     output += (scaledObjectiveAdd / .1);
-    output += gpa / (gpa_coeff / (gpa / .4));
-    if (output > 0) var scaledObjectiveAdd = (output/50);
-    output +=  (scaledObjectiveAdd/.1);
+ 
     var aps = parseFloat(ap5) + ap4 / 2;
     if (aps > 10) aps = 10;
     var objectiveScoreFinal = output + aps;
