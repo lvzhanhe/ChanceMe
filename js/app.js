@@ -164,8 +164,8 @@ getdata.onclick = function () {
     var collegeObjectiveScore50 = getObjectiveScore(college.GPA, collegeAP5, 0, collegeAvgSAT);
     var aboveAverageApplicant = false; 
     var exceptionalApplicant = false; 
-    if (objectiveScoreFinal > collegeObjectiveScore50) aboveAverageApplicant = true;
-    if (objectiveScoreFinal > collegeObjectiveScore75) exceptionalApplicant = true; 
+    if (_objective > collegeObjectiveScore50) aboveAverageApplicant = true;
+    if (_objective > collegeObjectiveScore75) exceptionalApplicant = true; 
     if (aboveAverageApplicant = true) comp = (1.2 * _objective) + (.8) * (sub/2); 
     if (exceptionalApplicant = true) comp = (1.4 * _objective) + (.6)(sub/2);
     
