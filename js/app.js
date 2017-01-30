@@ -155,6 +155,7 @@ getdata.onclick = function () {
     var test = satbox.value > 36 ? satbox.value : Math.round(satbox.value * 1600 / 36);
     var _objective = getObjectiveScore(gpabox.value, ap5box.value, ap4box.value, test);
     var comp = _objective + (sub / 3);
+    var subScaled = (sub / 3);
     var collegeAP5 = (.9 / college.ADMISSION); 
     var collegeAP4 = 0;
     var collegeAvgSAT = (college.SAT_25 + college.SAT_75) / 2;
@@ -172,7 +173,7 @@ getdata.onclick = function () {
     finalscore.value = Math.round(_percent * 100) / 100 + "%";
 
     objective.innerText = _objective.toPrecision(4);
-    subjective.innerText = sub.toPrecision(4);
+    subjective.innerText = subScaled.toPrecision(4);
     composite.innerText = (Math.round(comp * 100) / 100).toPrecision(4);
     scaled.innerText = (Math.round(_percent * 100) / 100).toPrecision(4);
 
@@ -183,8 +184,6 @@ getdata.onclick = function () {
 function getTotalApplicantScore(TA) {
     var index = ids.indexOf(cinput.value);
     var acceptance = actual_JSON[index].ADMISSION.replace("%", "") / 100;
-    if (TA >= 120) TA = 119.9;
-    var final = 120 - TA;
     if (TA >= 90) TA = 89.9; 
     var final = 90 - TA;
     final /= acceptance;
