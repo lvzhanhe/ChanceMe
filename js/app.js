@@ -288,3 +288,15 @@ function toggleDetails() {
     }
     visible = !visible;
 }
+
+
+function toggleExplain() {
+    if (visible) {
+        explain.style = "display:none";
+        explain_link.innerText = "How does it work?";
+    } else {
+        explain.style = "display:inline";
+        explain_link.innerText = "Hide Explanation";
+    }
+    visible = !visible;
+}
