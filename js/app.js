@@ -183,7 +183,7 @@ function getTotalApplicantScore(TA) {
     var index = ids.indexOf(cinput.value);
     var acceptance = actual_JSON[index].ADMISSION.replace("%", "") / 100;
     if (TA >= 90) TA = 89.9; 
-    var final = 120 - TA;
+    var final = 112 - TA;
     final /= acceptance;
     final /= TA;
     final = TA / final;
