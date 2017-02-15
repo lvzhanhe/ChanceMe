@@ -187,7 +187,7 @@ function getTotalApplicantScore(TA) {
     final /= acceptance;
     final /= TA;
     final = TA / final;
-    if (final > 100) final = 90 + (acceptance / 100) + (-1 / (TA / 100) + 10);
+    if (final > 100) final = 90 + acceptance + (-1 / (TA / 100) + 10);
     return final;
 }
 
