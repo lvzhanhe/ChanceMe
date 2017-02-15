@@ -143,7 +143,7 @@ getdata.onclick = function () {
     var index = ids.indexOf(cinput.value);
     var college = actual_JSON[index];
     stats_gpa.innerText = college.GPA;
-    stats_rate.innerText = college.ADMISSION;
+    stats_rate.innerText = college.ADMISSION * 100;
     stats_sat_25.innerText = college.SAT_25;
     stats_sat_75.innerText = college.SAT_75;
     stats_act_25.innerText = college.ACT_25;
@@ -154,7 +154,7 @@ getdata.onclick = function () {
     var _objective = getObjectiveScore(gpabox.value, ap5box.value, ap4box.value, test);
     var comp = _objective + (sub / 3);
     var subScaled = (sub / 3);
-    var collegeAP5 = (.9 / college.ADMISSION); 
+    var collegeAP5 = (.9 / college.ADMISSION * 100); 
     var collegeAP4 = 0;
     var collegeAvgSAT = (college.SAT_25 + college.SAT_75) / 2;
     var collegeObjectiveScore75 = getObjectiveScore(college.GPA, collegeAP5, 0, college.SAT_75);
@@ -181,7 +181,7 @@ getdata.onclick = function () {
 
 function getTotalApplicantScore(TA) {
     var index = ids.indexOf(cinput.value);
-    var acceptance = actual_JSON[index].ADMISSION.replace("%", "") / 100;
+    var acceptance = actual_JSON[index].ADMISSION;
     if (TA >= 90) TA = 89.9; 
     var final = 112 - TA;
     final /= acceptance;
