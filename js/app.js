@@ -181,13 +181,13 @@ getdata.onclick = function () {
 
 function getTotalApplicantScore(TA) {
     var index = ids.indexOf(cinput.value);
-    var acceptance = actual_JSON[index].ADMISSION.replace("%", "") / 100;
+    var acceptance = actual_JSON[index].ADMISSION;
     if (TA >= 90) TA = 89.9; 
     var final = 112 - TA;
     final /= acceptance;
     final /= TA;
     final = TA / final;
-    if (final > 100) final = 90 + acceptance + (-1 / (TA / 100) + 10);
+    if (final > 100) final = 90 + (acceptance / 100) + (-1 / (TA / 100) + 10);
     return final;
 }
 
