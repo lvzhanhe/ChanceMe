@@ -8,7 +8,7 @@
     <meta name="description" content="ChanceMe is a simpler, more accurate, more fun way to calculate your chances of getting into college.">
     <meta name="author" content="ChanceMe Authors at SpartaHack 2017">
     <link rel="icon" href="icon.png">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" type="text/css"
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" type="text/css"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -39,12 +39,6 @@
 <body>
     <h1 style="text-align: center">ChanceMe</h1>
     <h5 style="text-align: center">College Chances Calculator</h5>
-    
-  
-    
-    
-        
-  
     <div class="docs-section" id="forms">
         <div class="docs-example docs-example-forms">
             <form onsubmit="return false;">
@@ -62,37 +56,37 @@
                 </div>
                 <div class="row">
                     <div class="six columns">
-                        <label for="satbox">SAT or ACT (1600 / 36) <span style="color: red">*</span>
+                        <label for="satbox">SAT / ACT (1600 / 36) <span style="color: red">*</span>
                             <a class="more_info" title="The ACT and the new SAT are preferred. If you want to use the old SAT, multiply the score by 2 / 3." 
                             style="border-bottom: 1px black !important; font-size: 10px; cursor: help">What's this?</a>
                         </label>
-                        <input class="u-full-width" type="number" min="0" max="1600" id="satbox" value="0" required>
+                        <input class="u-full-width" type="number" min="0" max="1600" id="satbox" required>
                     </div>
                     <div class="six columns">
                         <label for="gpabox">Unweighted GPA (4.0 scale) <span style="color: red">*</span>
                             <a class="more_info" title="Weighted GPAs are not supported since each institution uses a different scale. See if your school provides a way to convert to a 4-point, unweighted scale." 
                             style="border-bottom: 1px black !important; font-size: 10px; cursor: help">What's this?</a>
                         </label>
-                        <input class="u-full-width" type="number" step="any" min="0" max="4" id="gpabox" value="0" required>
+                        <input class="u-full-width" type="number" step="any" min="0" max="4" id="gpabox" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="six columns">
-                        <label for="ap5box">No. of AP/IB Classes Taken
-                            <a class="more_info" title="Enter the number of AP/IB level classes that you have taken in your high school career, including ones you are taking this year." 
+                        <label for="ap5box">No. of 5s (AP) or 7s (IB)
+                            <a class="more_info" title="Enter in the number of fives you received on AP exams you've taken. Add this to the number of sevens you received on your IB exams." 
                             style="border-bottom: 1px black !important; font-size: 10px; cursor: help">What's this?</a>
                         </label>
-                        <input class="u-full-width" type="number" min="0" value="0" id="ap5box">
+                        <input class="u-full-width" type="number" min="0" id="ap5box">
                     </div>
                     <div class="six columns">
-                        <label for="ap4box">No. of Honors Classes Taken
-                            <a class="more_info" title="Enter the number of honors level classes that you have taken in your high school career, including ones you are taking this year." 
+                        <label for="ap4box">No. of 4s (AP), 5s &amp; 6s (IB)
+                            <a class="more_info" title="Enter in the number of fours you received on AP exams you've taken. Add this to the number of fives and sixes you received on your IB exams." 
                             style="border-bottom: 1px black !important; font-size: 10px; cursor: help">What's this?</a>
                         </label>
-                        <input class="u-full-width" type="number" min="0" value="0" id="ap4box">
+                        <input class="u-full-width" type="number" min="0" id="ap4box">
                     </div>
                 </div>
-                <div style="width:100%; height:20px"></div>
+                <div style="width:100%;height:20px;"></div>
                 <div class="docs-section">
                     <label style="text-align: center" id="questiontag"></label>
                     <label style="text-align: center; display: none" id="warning">Please answer all 20 questions.</label>
@@ -108,31 +102,9 @@
                             <input class="button-primary " type="submit" value="Chance Me" id="getdata">
                             <input class="button-primary " type="reset" value="Reset" onclick="r(); location.reload();">
                             <br>
-                            <a id="explain_link" onclick="toggleExplain();" style="border-bottom: 1px dotted; font-size: 18px; font-weight: bold; cursor: pointer; text-align: center; display: inline-block">How does it work?</a>
-                            <div id="explain" style="display: none">
-                            <div class ="explanation" style="bottom: 0; width: 100%; font-size: 14px;text-align: center">
-                                ChanceMe calculates three scores:
-                            </div>
-                                <div class ="explanation" style="bottom: 0; width: 100%; font-size: 14px;text-align: center">
-                                    The <strong> objective score (out of 50) </strong> is formulated by comparing your inputted data with the average admitted student profile Common Data Set data for the college you select.
-                                </div>
-                                <div class ="explanation" style="bottom: 0; width: 100%; font-size: 14px;text-align: center">
-                                    The <strong> subjective score (out of 50) </strong> is formulated using the <strong> ChanceMe Aptitude Test™ </strong>. Personality tests use a technique called factor analysis to identify certain personality characteristics and then determine the variables that produce them. Factor analysis works by grouping together several correlated items (i.e. questions) in order to make a prediction about one variable (i.e. a character trait). The <strong> ChanceMe Aptitude Test™</strong> uses factor analysis to group together several personality questions in order to make a prediction about distinct character traits that admissions counselors look for in ECs, reccomendation letters, essays, etc. Admissions officers use the subjective parts of your application to get to know you as a person, so the calculator attempts to “get to know you” in order to predict your performance on the subjective parts of the application process. 
-                                </div>
-                                <div class ="explanation" style="bottom: 0; width: 100%; font-size: 14px;text-align: center">
-                                    The <strong> composite score (out of 100) </strong> combines your subjective and objective scores, weighing them based on how holistic a selected college’s admissions process is, to give you a composite score that represents your overall appeal to the school. 
-                                </div>
-                                <div class ="explanation" style="bottom: 0; width: 100%; font-size: 14px; font-weight: bold; text-align: center">
-                                      Your percent chances are calculated based on your composite score and the selectivity of the school you have selected. 
-                                </div>
-         
-                            </div>
-                            <br>
-                            <br>
                             <input id="finalscore" style="text-align: center; font-weight: bold; width: 240px" type="text" readonly>
                             <br>
-                     
-                            <a id="details_link" onclick="toggleDetails();" style="border-bottom: 1px dotted; font-size: 18px; font-weight: bold; cursor: pointer; display: none">Show Details</a>
+                            <a id="details_link" onclick="toggleDetails();" style="border-bottom: 1px dotted; cursor: pointer; display: none">Show Details</a>
                             <div id="details" style="display: none">
                                 <div class="row">
                                     <div class="one-half column" id="detail-col">
@@ -145,7 +117,7 @@
                                     <div class="one-half column" id="detail-col-2">
                                         <span class="description">College's Stats</span>
                                         <br><span class="description">Average GPA:</span> <span id="stats_gpa">0.00</span>;
-                                        <span class="description">Acceptance Rate:</span> <span id="stats_rate">00.00%</span>
+                                        <span class="description">Admissions Rate:</span> <span id="stats_rate">00.00%</span>
                                         <br><span class="description">SAT 25<super>th</super> Percentile:</span> <span id="stats_sat_25">0000</span>;
                                         <span class="description">75<super>th</super> Percentile:</span> <span id="stats_sat_75">0000</span>
                                         <br><span class="description">ACT 25<super>th</super> Percentile:</span> <span id="stats_act_25">00</span>;
@@ -154,14 +126,13 @@
                                     </div>
                                 </div>
                         </center>
+                        </div>
                     </div>
-                </div>
             </form>
             </div>
             <div id="footer" style="bottom: 0; width: 100%; font-size: 8px;text-align: center">
-                All source code is available on GitHub, <a href="//github.com/epicmittmitt/ChanceMe/">here</a>.<br>
-                Made by Sumit Basak, Zhanhe "Jay" Lyu, Alex Slovinski, and Brennan Stark.<br><br>
-                Website Build Date: <span id="builddate"></span>
+                <span>Additional source code (in C#) is available <a href="WebScraper.cs">here</a>.</span><br>
+                <span>Made by Sumit Basak, Zhanhe "Jay" Lyu, Alex Slovinski, and Brennan Stark.</span>
             </div>
             <script src="js/app.js"></script>
 </body>
