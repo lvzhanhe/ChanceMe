@@ -11,7 +11,7 @@ ChanceMe calculates the chances that a student gets in to a specified college ba
 
 ## How we built it
 
-Brennan had built a very basic blocks code demo version college chances calculator built in mitappinventor for a school project prior to Spartahack. Using that as an inspiration, we brainstormed pseudocode for a more sophisticated web-app college chances calculator. Sumit worked primarily on writing the code for the calculator's functionality using JavaScript. He also used C# to create a data scraper that he used to parse the college admissions data that the app uses to compare a student to a given school's admitted student profile. Zhanne, "Jay," worked primarily on designing the user interface using HTML. Brennan and Alex worked primarily on computing the main algorithm's that the calculator uses. They also assisted with writing the JavaScript code.
+Brennan had built a very basic blocks code demo version college chances calculator built in mitappinventor for a school project prior to Spartahack. Using that as an inspiration, we brainstormed pseudocode for a more sophisticated web-app college chances calculator. Sumit worked primarily on writing the code for the calculator's functionality using JavaScript. He also used C# to create a data scraper that he used to parse the college admissions data that the app uses to compare a student to a given school's admitted student profile. Zhanne worked primarily on designing the user interface using HTML. Brennan and Alex worked primarily on computing the main algorithm's that the calculator uses. They also assisted with writing the JavaScript code.
 
 ## Challenges we ran into
 
